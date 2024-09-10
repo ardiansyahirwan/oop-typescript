@@ -1,35 +1,40 @@
-<h2>Documentation TS OOP</h2>
+# Documentation TS OOP
 
-- [Installation](#installation)
-- [Class](#class)
-- [Constructor](#constructor)
-- [Property or Field](#property-or-field)
-  - [Property with Default Value](#property-with-default-value)
-- [Method](#method)
-- [Setter and Getter](#setter-and-getter)
-- [Inheritance](#inheritance)
-  - [Interface Inheritance](#interface-inheritance)
-- [Super Constructor](#super-constructor)
-- [Method Overriding](#method-overriding)
-- [Super Method](#super-method)
-- [Visibility](#visibility)
-- [Parameter Properties](#parameter-properties)
-- [Parameter instanceof](#parameter-instanceof)
-- [Polymorphism](#polymorphism)
-- [Method Polymorphisme](#method-polymorphisme)
-- [Type Casting](#type-casting)
-- [Abstract Class](#abstract-class)
-- [Static](#static)
-- [Namespace](#namespace)
+- [Documentation TS OOP](#documentation-ts-oop)
+  - [Installation](#installation)
+  - [Class](#class)
+  - [Constructor](#constructor)
+  - [Property or Field](#property-or-field)
+    - [Property with Default Value](#property-with-default-value)
+  - [Method](#method)
+  - [Setter and Getter](#setter-and-getter)
+  - [Inheritance](#inheritance)
+    - [Interface Inheritance](#interface-inheritance)
+  - [Super Constructor](#super-constructor)
+  - [Method Overriding](#method-overriding)
+  - [Super Method](#super-method)
+  - [Visibility](#visibility)
+  - [Parameter Properties](#parameter-properties)
+  - [Parameter instanceof](#parameter-instanceof)
+  - [Polymorphism](#polymorphism)
+  - [Method Polymorphisme](#method-polymorphisme)
+  - [Type Casting](#type-casting)
+  - [Abstract Class](#abstract-class)
+  - [Static](#static)
+  - [Namespace](#namespace)
+  - [Generic](#generic)
+  - [Generic Constraint](#generic-constraint)
+    - [Generic Function](#generic-function)
+    - [Generic Interface](#generic-interface)
 
+## Installation
 
-# Installation
 Please Follow TS basic for installation from github [Intallation basic TS](https://github.com/ardiansyahirwan/belajar-typescript-dasar?tab=readme-ov-file#installation)
-<br/>
-<br/>
 
-# Class
+## Class
+
 **Class** is a blueprint for make an object. **Object** can have an Attribute, methods. For instance an object from class you can use keyword ``new``
+
 ```typescript
 //Define class at customer.ts
 class Customer {}
@@ -37,11 +42,11 @@ class Customer {}
 // instance an object from class
 const customer:Costumer = new Costumer();
 ```
-<br/>
-<br/>
 
-# Constructor
+## Constructor
+
 is a first method were execute in class. Constructor not return a value.
+
 ```typescript
 class Customer {
       constructor () {
@@ -51,11 +56,11 @@ class Customer {
 // when instance new Customer will be return "new Customer has Instance"
 new Customer();
 ```
-<br/>
-<br/>
 
-# Property or Field
+## Property or Field
+
 Property or attribute or Field is a variable when declare in class. Properties kind is mandatory (required), optional and readonly. if property is mandatory, is must to declare in [constructor](#constructor).
+
 ```typescript
 class Customer {
    //define properties
@@ -72,7 +77,9 @@ class Customer {
    // when instance an object will return a value
    new Costumer('budi', 21);
 ```
-## Property with Default Value
+
+### Property with Default Value
+
 ```typescript
 class Customer {
 
@@ -82,21 +89,21 @@ class Customer {
 
 }
 ```
-<br/>
-<br/>
 
-# Method
+## Method
+
 Method or function in a class same with javascript
+
 ```typescript
 sayHello(): string {
    return `hello ${ this.name }`;
 }
 ```
-<br/>
-<br/>
 
-# Setter and Getter
+## Setter and Getter
+
 setter in TS use method with keyword ``set``, and getter use ``get``. actually setter and getter call an ``accessor`` this was created with ``_``. example ``_name``.
+
 ```typescript
  class Person {
       _name: string = "";
@@ -113,11 +120,11 @@ setter in TS use method with keyword ``set``, and getter use ``get``. actually s
    const person:Person = new Person();
    console.info(person.name = "Joko");
    ```
-   <br/>
-   <br/>
 
-# Inheritance
+## Inheritance
+
 Inheritance it about how to inherit attribute and method into child class. actually inheritance use keyword ``extends`` in class. Parent Class in TS just one, and child class who inherited a parent class can access all method in parent class, child class can be a parent class too, if they inherited to other class.
+
 ```typescript
 class Employee {
    name: string;
@@ -135,9 +142,13 @@ class Employee {
    const manager: Manager = new Manager( "budi" );
    const director: Director = new Director( "santoso" );
    ```
+
    in this case ``manager`` and ``director`` can access parent attribute from employee, cause ``manager`` and ``director`` inherit ``employee``
-   ## Interface Inheritance
+
+### Interface Inheritance
+
    selain class we can inherit an interface. for inherit an interface we can use ``implements``. Interface use as contract file. we can inherit more than one interface.
+
    ```typescript
     interface Employee {
       name: string;
@@ -163,11 +174,11 @@ class Employee {
     const manager: Manager = new Manager( "budi" );
    console.info( manager.division( 'IT' ) );
    ```
-   <br/>
-   <br/>
 
-# Super Constructor
+## Super Constructor
+
 sometimes in child class we want to declare ``constructor()`` method, but we should to declare parent constructor too in child class. to clear that, we can call method ``super()`` for declare ``parent contructor`` in child class.
+
 ```typescript
 // class manager implements Employee and Division
  class Director extends Manager {
@@ -183,12 +194,13 @@ sometimes in child class we want to declare ``constructor()`` method, but we sho
       }
    }
 ```
-in ``Manager class`` as parents class who implements ``Employee Interfaces`` and ``Division Interfaces`` have cosntructor. so if ``Director class`` as child class want to declare constructor, ``Director class`` should declare parent class constructor, cause ``Director class`` extended ``Manager class``. in TS it doing with declare ``super()`` method.
-<br/>
-<br/>
 
-# Method Overriding
+in ``Manager class`` as parents class who implements ``Employee Interfaces`` and ``Division Interfaces`` have cosntructor. so if ``Director class`` as child class want to declare constructor, ``Director class`` should declare parent class constructor, cause ``Director class`` extended ``Manager class``. in TS it doing with declare ``super()`` method.
+
+## Method Overriding
+
 Override method is you declare method inherit from parent class, and you can rewrite code on method.
+
 ```typescript
 class Greeting {
       greeting( name: string ): string {
@@ -209,11 +221,11 @@ class Person extends Greeting {
 console.info( person.greeting( 'Budi' ) );
 console.info( greet.greeting( 'Budi' ) );
 ```
-<br/>
-<br/>
 
-# Super Method
+## Super Method
+
 You in child class who inherited by parent class, and you want to call method parent class into your child class method, you can use keyword ``super`` in your child class.
+
 ```typescript
 class Greeting {
       greeting( name: string ): string {
@@ -231,31 +243,31 @@ class Greeting {
 
 const person: Person = new Person();
 console.info( person.greeting( 'Budi' ) );
-``` 
-<br/>
-<br/>
+```
 
-# Visibility
+## Visibility
+
 on default visibility in TS or JS is public. in JS private use ``#``. but in TS we can declare as public, private, protected.
+
 - ``public`` is can access in class or from out of class
 - ``private`` can access only in class
 - ``protected`` can access on class and child class was inherited.
-<br/>
-<br/>
 
-# Parameter Properties
+## Parameter Properties
+
 **_we can define parameter in constructor without declare attribute in class_**. for define in constructor just ``<visibility>nameAttribute:<type>=initialize``. if you define visibility in constructor they will be a parameter Properties.
+
 ```typescript
 class Person {
       constructor ( public name: string ) {
       }
    }
 ```
-<br/>
-<br/>
 
-# Parameter instanceof
+## Parameter instanceof
+
 when we check are this object instance of class or no, we can use ``instanceof`` for throwing an boolean. we can not use ``typeof`` for checking instance object.
+
 ```typescript
 class Person { }
 // instance object from person
@@ -267,11 +279,11 @@ if(person instanceof Person){
    //condition false
 }
 ```
-<br/>
-<br/>
 
-# Polymorphism
+## Polymorphism
+
 in OOP Polymorphism describe as Object ability for berubah bentuk ke bentuk lain. Polymorphism erat kaitannya dengan inheritance. Selama perubahan bentuknya masih dalam inheritance nya itu tidak menjadi masalah.
+
 ```typescript
  class Product {
       constructor ( public name: string ) { }
@@ -290,12 +302,13 @@ in OOP Polymorphism describe as Object ability for berubah bentuk ke bentuk lain
       product = new Iphone( "4S" )
       console.info( product );
 ```
-yang di maksud polymorphism adalah kemampua suatu object untuk berubah bentuk sesuai dengan inheritance nya.
-<br/>
-<br/>
 
-# Method Polymorphisme
-Kita bisa mengirim method turunan dari parent class nya,
+yang di maksud polymorphism adalah kemampua suatu object untuk berubah bentuk sesuai dengan inheritance nya.
+
+## Method Polymorphisme
+
+Kita bisa mengirim method turunan dari parent class nya
+
 ```typescript
  function hasProduct( product: Product ): void {
       console.info( `yaudah ${ product.name }` );
@@ -304,11 +317,11 @@ Kita bisa mengirim method turunan dari parent class nya,
  hasProduct( new Smartphone( 'BB' ) );
  hasProduct( new Iphone( 'IP15Promax' ) );
 ```
-<br/>
-<br/>
 
-# Type Casting
-When we doing convertion, pastikan that first checking convertion start with child class. 
+## Type Casting
+
+When we doing convertion, pastikan that first checking convertion start with child class.
+
 ```typescript
  function hasProduct( product: Product ): void {
       console.info( `yaudah ${ product.name }` );
@@ -324,11 +337,11 @@ if(product instanceof Iphone){
    console.info(`yaudah ${product.name}`);
 }
 ```
-<br/>
-<br/>
 
-# Abstract Class
+## Abstract Class
+
 Abstract class cant be an object withkey ``new``, abstract class just use as parent class yang nantinya akan menurunkan attribute dan method nya. Abstract class hampir sama dengan interface, bedanya Abstract Class tidak mewajibkan menurunkan semua attribute dan method. if in abstract class, ``abstract`` not declare, so that attribute not required declare in child class.
+
 ```typescript
 abstract class Person {
       abstract name: string;
@@ -351,13 +364,13 @@ abstract class Person {
       }
       const person: Child = new Child( 'Budi', 1 );
       person.sayHello();
-``` 
-<br/>
-<br/>
+```
 
-# Static
+## Static
+
 Static in OOP actually use for make an Utility/Helper Function. Static merupakan kata kunci yang digunakan dalam properties dan method, yang membuat properties dan method tersebut menjadi bukan bagian dari class atau objek tersebut lagi.
 static properties atau method properties, seakan akan seperti kita membuat global variable. dan kita juga bisa menambahkan visibility di dalamnya.
+
 ```typescript
 class Config {
       static AUTHOR: string = "Budi";
@@ -366,11 +379,11 @@ class Config {
 
 console.info( Config.LANGUAGE );
 ```
-<br/>
-<br/>
 
-# Namespace
-Untuk memanagemen yang ada di dalam modul
+## Namespace
+
+Untuk memanagemen yang ada di dalam modul.
+
 ```typescript
 export namespace Config {
    export const NAME: string = "Applicants";
@@ -381,4 +394,83 @@ export namespace Config {
 // try to call name from namespace
 import { Config } from "../src/config";
   console.info( Config.NAME );
+```
+
+## Generic
+
+it a data type in generical same with `any`, but `generic type` can capture the variable. generic type stands for any and type data.
+
+```typescript
+function anything<Type>(a:Type):Type{
+   return a;
+}
+
+let student = anything<string>('brandon');
+let numbers = anything<number>(1);
+console.info(student);
+```
+
+when we assign to variable, generic type will capture type variable when we assign new variable on `anything()` method. generic type can easiest for make variable for any data type. if you use `any` data type, they will be lost the data type.
+
+## Generic Constraint
+
+when we created a generic type, in other case :
+
+```typescript
+function anything<Type>(a:Type):Type{
+   return a.length;
+}
+```
+
+this case will return error, cause generic stand for all data type, we should declare type of generic data type.
+
+```typescript
+function anything<Type>(a:Array<Type>):Array<Type>{
+   return a.length;
+}
+```
+
+### Generic Function
+
+you can use generic for declare function which fill any data type.
+
+```typescript
+function returnValue<Type>(name:Type):Type{
+   return name;
+}
+expect(returnValue<number>(1)).toBe(1);
+
+// function expression
+function returnValue<Type>(name:Type):Type{
+   return name;
+}
+expect(returnValue<number>(1)).toBe(1);
+```
+
+also you can change `Type` with anything
+
+```typescript
+function returnValue<Input>(name:Input):Input{
+   return name;
+}
+expect(returnValue<number>(1)).toBe(1);
+```
+
+### Generic Interface
+
+you can declare interfaces in generic type
+
+```typescript
+interface returnValue<Input>{
+obj : Input;
+}
+```
+
+and you can make an variable base on interface type.
+
+```typescript
+ const objectInstance:returnValue<number> = {
+   obj : 1,
+}
+console.info(objectInstance.obj);
 ```
