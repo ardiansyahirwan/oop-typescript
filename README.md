@@ -26,6 +26,9 @@
   - [Generic Constraint](#generic-constraint)
     - [Generic Function](#generic-function)
     - [Generic Interface](#generic-interface)
+  - [Decorators](#decorators)
+    - [Decorator Factory](#decorator-factory)
+    - [Decorator Composition](#decorator-composition)
 
 ## Installation
 
@@ -473,4 +476,58 @@ and you can make an variable base on interface type.
    obj : 1,
 }
 console.info(objectInstance.obj);
+```
+
+## Decorators
+
+decorator is declaration who can be attached to a _class declaration*,_method*, _accessor*,_property* and _parameter*. to enable decorator we can do
+
+```bash
+tsc --target ES5 --experimentalDecorators
+```
+
+or manually change on `tsconfig.json`
+
+```json
+{
+   "compilerOptions" : {
+      "target" : "ES5",
+      "experimentalDecorators":true
+   }
+}
+```
+
+for declare a `decorator` please make a function decorator return a `target`
+
+```typescript
+return function(target)
+{
+   //this is decorator for do something with target and value
+}
+```
+
+### Decorator Factory
+
+is a function that return an expression , they called by decorator at runtime.
+
+```typescript
+function color(value:string){
+   return function(target)
+   {
+      //this is decorator for do something with target and value
+   }
+}
+```
+
+### Decorator Composition
+
+are decorator when applied on declation
+
+```typescript
+//this is single line
+@f @g
+
+// this is multiple line
+@f
+@g
 ```
